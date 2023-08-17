@@ -1,11 +1,19 @@
 import { useDispatch, useSelector } from "react-redux"
 import { decrease, increase, removeItem } from "../Features/Cart/cartSlice"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Cart = () => {
-    const cartItems = useSelector(state => state.cart.cartItems)
-    const cartItemsAmt = useSelector(state => state.cart.cartItemsAmt)
-    const dispatch = useDispatch()
+  const [openModal, setOpenModal] = useState(false)
+
+  const cartItems = useSelector(state => state.cart.cartItems)
+  const cartItemsAmt = useSelector(state => state.cart.cartItemsAmt)
+  const dispatch = useDispatch()
+
+  function controlModal(){
+    setOpenModal(true)
+  }
 
     useEffect(() => {
       window.scrollTo(0,0)
@@ -63,8 +71,9 @@ const Cart = () => {
     })
 
   return (
+    <>
     <section className="w-full min-h-screen p-12 pt-24 md:pl-[150px] md:pr-[150px]">
-      {cartItems.length > 0 ? <h4 className="text-xl font-['Noto'] font-semibold mb-9">You have {cartItems.length} item{cartItems.length > 1 ? "s" : ""} in cart</h4> : <h4 className="text-xl font-['Noto'] font-semibold mb-6">No Items in Cart.</h4>}
+      {cartItems.length > 0 ? <div className="flex justify-between w-full items-center mb-9"><h4 className="text-xl font-['Noto'] font-semibold">You have {cartItems.length} item{cartItems.length > 1 ? "s" : ""} in cart</h4><button className=" text-red-400 hover:underline hover:underline-offset-2" onClick={() => controlModal()}>Clear Cart</button></div>  : <h4 className="text-xl font-['Noto'] font-semibold mb-6">No Items in Cart.</h4>}
       <div className="flex flex-col w-full h-auto">
         {cartItems.length > 0 && 
         <>
@@ -84,7 +93,7 @@ const Cart = () => {
         </table>
         <div className="w-full flex justify-between">
         <div></div>
-        <div className="flex lg:mr-8">
+        <div className="flex lg:mr-[22px]">
           <p className="mr-2">Total: </p>
           <h4 className="font-semibold">${cartItemsAmt}</h4>
         </div>
@@ -104,6 +113,21 @@ const Cart = () => {
         }
       </div>
     </section>
+    <div className={`absolute w-full h-full flex justify-center items-center bg-black bg-opacity-70 ${openModal ? "block" : "hidden"} top-0 left-0 z-20`}>
+      <div className="w-auto h-auto bg-white text-black text-center relative py-10 px-10 rounded">
+        <h4 className=" mb-4 font-['Rubik']">Sure you want to clear all cart items?</h4>
+        <div className="w-full flex justify-center gap-4">
+          <button className="border-2 border-red-600 px-7 py-2 rounded-full text-red-600 font-semibold">Clear</button>
+          <button className="border-2 border-black px-7 py-2 rounded-full font-semibold">Cancel</button>
+        </div>
+        <FontAwesomeIcon 
+        icon={faXmark}
+        className="absolute right-[10px] top-[10px] text-xl text-gray-600 cursor-pointer"
+        onClick={() => setOpenModal(false)}
+       />
+      </div>
+    </div>
+    </>
   )
 }
 export default Cart

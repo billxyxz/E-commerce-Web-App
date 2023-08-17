@@ -2,22 +2,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import aboutBg from './../Assets/images/about-bg.png'
 import serviceBg from './../Assets/images/service-bg.jpg'
 import { faTruckFast, faMedal, faClock, faMoneyBill1Wave } from '@fortawesome/free-solid-svg-icons'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const About = () => {
+  const [isIntersect, setIsIntersect] = useState()
+  const ref = useRef()
+
+  console.log(isIntersect);
+
   useEffect(() => {
     window.scrollTo(0,0)
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersect(entry.isIntersecting)
+    },
+    )
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [isIntersect]);
   
   return (
     <section className="min-h-[100vh]">
-        <div className="h-[26vh] sm:h-[20vh] md:h-[35vh] flex items-center justify-center bg-no-repeat bg-center bg-cover" style={{backgroundImage: `url(${aboutBg})`}}>
+        <div className="h-[26vh] sm:h-[20vh] md:h-[34vh] flex items-center justify-center bg-no-repeat bg-cover bg-center" style={{backgroundImage: `url(${aboutBg})`}}>
           <h2 className="text-5xl sm:text-6xl font-semibold text-white font-['Noto'] mt-10">About Us</h2>
         </div>
         <div className='w-full p-12 pt-24 pb-24 md:pl-[150px] md:pr-[150px]'>
           <div className='flex flex-col md:justify-center items-center justify-start gap-8 md:flex-row'>
-          <img src={serviceBg} alt="" className='w-[350px] h-[350px] sm:mx-0 aspect-square border-l-[10px] border-b-[10px] border-black object-fill' />
-          <article className='min-h-[350px] flex flex-col'>
+          <img src={serviceBg} alt="" className={`w-[350px] h-[350px] sm:mx-0 aspect-square border-l-[10px] border-b-[10px] transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : '-translate-x-full'} border-black object-fill`} ref={ref} />
+          <article className={`min-h-[350px] flex transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : 'translate-x-full'} flex-col`} ref={ref}>
             <h3 className='font-["Noto"] text-2xl font-semibold mb-3'>Know About Our Business History</h3>
             <p className='font-["Rubik"] font-extralight max-h-52 overflow-hidden'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora esse in itaque quaerat provident repudiandae, aliquam praesentium ea libero ipsam eveniet debitis excepturi aut voluptates corporis perferendis eligendi vitae facere odio, harum accusantium perspiciatis alias molestiae? Quos harum rem itaque doloremque odit reprehenderit suscipit, nisi hic mollitia necessitatibus, placeat id sapiente quae fuga repellendus! Veritatis repellendus nemo corrupti commodi quam.</p>
             <button className="bg-black text-white pt-2 pb-2 pl-4 pr-4 place-self-start mt-10">Contact Us</button>

@@ -98,7 +98,7 @@ const Products = () => {
                     <h4 className="font-semibold">$<span className="text-lg font-semibold">{product.price}</span></h4>
                     </div>
                     </Link>
-                    <button className="mt-3" onClick={() => handleCart(product)}>Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
+                    <button className="mt-3 border-2 border-black p-3 py-2 rounded-full" onClick={() => handleCart(product)}>Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
                   </div>
                )
             })}
