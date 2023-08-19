@@ -31,8 +31,8 @@ const About = () => {
   
   return (
     <section className="min-h-[100vh] overflow-hidden">
-        <div className="h-[26vh] sm:h-[20vh] md:h-[34vh] flex items-center justify-center bg-no-repeat bg-cover bg-center" style={{backgroundImage: `url(${aboutBg})`}}>
-          <h2 className="text-5xl sm:text-6xl font-semibold text-white font-['Noto'] mt-10">About Us</h2>
+        <div className="h-[26vh] sm:h-[20vh] md:h-[34vh] md:max-h-60 flex items-center justify-center bg-no-repeat bg-cover bg-center" style={{backgroundImage: `url(${aboutBg})`}}>
+          <h2 className="text-5xl sm:text-[72px] font-semibold text-white font-['Noto'] mt-10">About Us</h2>
         </div>
         <div className='w-full p-12 pt-24 pb-24 md:pl-[150px] md:pr-[150px]'>
           <div className='flex flex-col md:justify-center items-center justify-start gap-8 md:flex-row'>

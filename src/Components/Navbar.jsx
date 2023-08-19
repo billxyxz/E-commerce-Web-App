@@ -65,7 +65,9 @@ const Navbar = () => {
            style={handleActive}
            onClick={() => showNav(false)}
            >About Us</NavLink>
-           {currentUser?.email ? <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 rounded text-center sm:hidden text-red-600" onClick={handleProfileBtn}>Profile</button> :  <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 sm:hidden rounded text-center" onClick={handleLoginBtn}>Login</button>}
+           {currentUser?.email ? <button 
+        onClick={() => navigate('user')}
+        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300  sm:hidden"><FontAwesomeIcon icon={faUser} /></button> :  <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 sm:hidden rounded text-center" onClick={handleLoginBtn}>Login</button>}
         </ul>
         <div className="flex items-center gap-4">
         <div className="relative">
@@ -75,7 +77,7 @@ const Navbar = () => {
         {nav ? <Close navController={handleNav} /> : <Hamburger navController={handleNav}  />}
         {currentUser?.email ? <button 
         onClick={() => navigate('user')}
-        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300 "><FontAwesomeIcon icon={faUser} /></button> : <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 rounded text-center hidden sm:block -mt-1" onClick={handleLoginBtn}>Login</button>}
+        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300 hidden sm:block"><FontAwesomeIcon icon={faUser} /></button> : <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 rounded text-center hidden sm:block -mt-1" onClick={handleLoginBtn}>Login</button>}
         </div>
     </nav>
   )

@@ -37,7 +37,7 @@ const Home = () => {
   return (
     //Hero Section Container
     <section className="w-full relative justify-center min-h-[100vh] overflow-x-hidden">
-       <div className="flex align-middle h-[85vh] w-full bg-[#FFFEC4]  p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
+       <div className="flex align-middle h-auto w-full bg-[#FFFEC4]  p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
         <div 
         data-aos='zoom-in'
         data-aos-easing='ease-in'
@@ -59,7 +59,7 @@ const Home = () => {
         data-aos-easing='ease-in'
         data-aos-duration='600'
         >
-            <img src={heroImg} alt="hero image" className="h-full max-h-[500px] lg:w-[60%] md:w-[full] object-cover object-center transition-all duration-1000 ml-32" />
+            <img src={heroImg} alt="hero image" className="h-full max-h-[500px] lg:w-[63%] md:w-[full] object-cover object-center transition-all duration-1000 md:ml-24 lg:ml-32" />
         </div>
        </div> 
        {/* Container for the featured products */}

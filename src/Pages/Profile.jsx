@@ -2,6 +2,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useAuthContext } from "../Context/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 const Profile = () => {
   const { currentUser, logout } = useAuthContext()
@@ -17,6 +18,11 @@ const Profile = () => {
       console.log(err.message)
     }
   }
+
+  
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
 
   return (
     <section className="w-full h-[100vh] p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
