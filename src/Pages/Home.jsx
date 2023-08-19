@@ -1,20 +1,48 @@
-import { useNavigate } from "react-router-dom"
+import { Await, Link, defer, useLoaderData, useNavigate } from "react-router-dom"
 import heroImg from "./../Assets/images/hero-img.png"
-import { useEffect } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css'
+import { getProducts } from "../firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Features/Cart/cartSlice";
+
+export async function homeLoader(){
+  const data = getProducts();
+  if(!data.ok){
+    console.log("error")
+  }
+
+  return defer({products: data})
+}
 
 const Home = () => {
   const navigate = useNavigate()
+  const [showHero, setShowHero] = useState(false);
+  const loaderData = useLoaderData();
+  const dispatch = useDispatch();
+  console.log(loaderData)
 
   useEffect(() => {
+    //To make the page scroll to the top when it's routed to view
     window.scrollTo(0,0)
+
+    //AOS library animation
+    Aos.init();
+    Aos.refresh();
   }, []);
 
-  console.log(import.meta.env.VITE_FIREBASE_API_KEY)
-
   return (
-    <section className="w-full relative justify-center min-h-[100vh]">
-       <div className="flex align-middle h-[85vh] w-full bg-[#FFFEC4]  p-12 pt-24 md:pl-[150px] md:pr-[150px]">
-        <div className="w-full md:w-1/2">
+    //Hero Section Container
+    <section className="w-full relative justify-center min-h-[100vh] overflow-x-hidden">
+       <div className="flex align-middle h-[85vh] w-full bg-[#FFFEC4]  p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
+        <div 
+        data-aos='zoom-in'
+        data-aos-easing='ease-in'
+        data-aos-duration='600'
+        className=" w-full md:w-1/2">
             <h3 className="sm:text-5xl text-4xl font-bold mb-4 font-['Noto']">
                 Make your Fashion<br/>Look more<br/>Attractive. 
             </h3>
@@ -24,10 +52,75 @@ const Home = () => {
             className="bg-black text-white pt-2 pb-2 pl-4 pr-4"
             >Shop Now</button>
         </div>
-        <div className="h-full w-1/2 hidden md:flex">
-            <img src={heroImg} alt="hero image" className="h-full max-h-[500px] lg:w-[60%] md:w-[full] object-cover object-center ml-32" />
+        {/* Hero Image */}
+        <div 
+        className="h-full w-1/2 hidden md:flex"
+        data-aos='fade-left'
+        data-aos-easing='ease-in'
+        data-aos-duration='600'
+        >
+            <img src={heroImg} alt="hero image" className="h-full max-h-[500px] lg:w-[60%] md:w-[full] object-cover object-center transition-all duration-1000 ml-32" />
         </div>
        </div> 
+       {/* Container for the featured products */}
+       <div className="w-full h-auto lg:pl-[150px] lg:pr-[150px] px-12 pt-8">
+        {/* Heading div */}
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className=" w-7 h-[3px] bg-[#303019] mt-[3px]"></div>
+            <h4 className=" text-xl font-['Noto'] font-medium">Top Products</h4>
+          </div>
+          <Link 
+          to='shop'
+          className="hover:underline-offset-2 hover:underline"><span className="font-medium">See all products</span><FontAwesomeIcon
+          className=" text-xs"
+          icon={faChevronRight} 
+          ></FontAwesomeIcon></Link> 
+        </div>
+       <Suspense fallback={<div className="w-full h-[70vh] flex items-center justify-center">
+      <h2 className="text-2xl font-medium tracking-widest animate-pulse">Loading...</h2>
+    </div>}>
+      <Await resolve={loaderData.products}>
+        {
+          (loaderProducts) => {
+            const topProducts = loaderProducts.filter(product => product.tag === 'top')
+            return (
+              <div className="flex sm:justify-start justify-center
+              flex-wrap gap-12 w-full py-10">
+                {
+                  topProducts.map(product => {
+                    return (
+                        <div 
+                        className="w-[250px] h-auto text-center" 
+                        key={product.id}
+                        data-aos='zoom-in'
+                        data-aos-easing='ease-in'
+                        data-aos-delay='50'
+                        >
+                          <Link 
+                          to={`shop/${product.id}`}
+                          >
+                          <div className="w-full aspect-square">
+                          <img src={product.imgUrl} alt={product.name} className="w-full h-full object-fill mb-3" />
+                          <h2 className=" text-base font-medium text-black">{product.name}</h2>
+                          <h4 className="font-semibold">$<span className="text-lg font-semibold">{product.price}</span></h4>
+                          </div>
+                          </Link>
+                          <button 
+                          className="mt-3 border-2 border-black p-3 py-2 rounded-full"
+                          onClick={() => dispatch(addToCart(product))}
+                          >Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
+                        </div>
+                     )
+                  })
+                }
+              </div>
+            )
+          }
+        }
+      </Await>
+    </Suspense>
+       </div>
     </section>
   )
 }

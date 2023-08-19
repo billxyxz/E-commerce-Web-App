@@ -1,6 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Layout from './Components/Layout'
-import Home from './Pages/Home'
+import Home, { homeLoader } from './Pages/Home'
 import About from './Pages/About'
 import Products, { loader } from './Pages/Products'
 import ProductDetailPage, { detailLoader } from './Pages/ProductDetailPage'
@@ -10,12 +10,15 @@ import Login from './Pages/Login'
 import { AuthProvider } from './Context/AuthContext'
 import Signup from './Components/Signup'
 import Signin from './Components/Signin'
+import Profile from './Pages/Profile'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout />}>
         <Route index 
         element={<Home />} 
+        loader={homeLoader}
+        errorElement={<Error />}
         />
         <Route 
         path='about' 
@@ -52,6 +55,10 @@ const router = createBrowserRouter(createRoutesFromElements(
             element={<Signin />}
             />
         </Route>
+        <Route
+        path='user'
+        element={<Profile />}
+         />
     </Route>
 ))
 

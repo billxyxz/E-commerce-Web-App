@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { useAuthContext } from '../Context/AuthContext'
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const emailRef = useRef('')
@@ -47,8 +47,8 @@ const Signup = () => {
                     <label htmlFor="checkPassword" className='block mb-1 font-medium'>Confirm Password</label>
                     <input type="password" id='checkPassword' placeholder='Re-enter password' className='border-2 w-full px-2 py-1 outline-none rounded-sm' ref={passwordConfirmRef} />
                 </div>
-                <button className='bg-black text-white self-center px-6 py-2 uppercase text-sm font-semibold mb-2' type='submit'>Signup</button>
-                <p className='text-center' >Already have an account? <Link to='signin' replace>Login</Link> </p>
+                <button className='bg-black text-white self-center px-6 py-[10px] uppercase text-sm font-semibold mb-2' type='submit'>Signup</button>
+                <p className='text-center' >Already have an account? <Link to='signin' replace className='hover:underline-offset-2 hover:underline'>Login</Link> </p>
             </form>
   )
 }

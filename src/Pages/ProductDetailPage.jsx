@@ -3,6 +3,8 @@ import { getProduct } from "../firebase"
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../Features/Cart/cartSlice"
 
 export async function detailLoader({params}){
     //loader function has access to a params object with a key of "id"(we set that in the Route oath in the App.jsx file)
@@ -13,6 +15,7 @@ export async function detailLoader({params}){
 const ProductDetailPage = () => {
     const loaderData = useLoaderData()
     const location = useLocation();
+    const dispatch = useDispatch()
     console.log(location.state);
     useEffect(() => {
         window.scrollTo(0,0)
@@ -28,15 +31,15 @@ const ProductDetailPage = () => {
                 <p className=" text-base font-light mb-2">{loaderData.description}</p>
                 <p className="mb-2">Gender: <span className="uppercase font-['Noto']">{loaderData.gender}</span></p>
                 <p className="mb-12 font-semibold">$<span className="text-lg font-semibold">{loaderData.price}</span></p>
-                <button className="bg-black text-white w-full p-2 uppercase font-medium">Add To Cart</button>
+                <button className="bg-black text-white w-full p-2 uppercase font-medium" onClick={() => dispatch(addToCart(loaderData))}>Add To Cart</button>
             </div>
         </div>
   return (
-    <section className="h-auto w-full p-12 pt-24 md:pl-[150px] md:pr-[150px]">
+    <section className="h-auto w-full p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
         <Link 
         className="hover:underline hover:underline-offset-4 hover:text-blue-700"
-        to={location.state ? `../shop/${location.state.search}` : "."}
-        ><FontAwesomeIcon icon={faChevronLeft} className=" text-xs"></FontAwesomeIcon> <span className="font-lg font-medium">Back to Products</span></Link>
+        to={location.state ? `../shop/${location.state.search}` : ".."}
+        ><FontAwesomeIcon icon={faChevronLeft} className=" text-xs"></FontAwesomeIcon> <span className="font-lg font-medium">Back</span></Link>
         {productDetailEl}
     </section>
   )

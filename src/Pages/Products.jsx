@@ -5,6 +5,8 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/Cart/cartSlice";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 
 
@@ -31,7 +33,10 @@ const Products = () => {
 
 
     useEffect(() => {
-      window.scrollTo(0,0)
+      window.scrollTo(0,0);
+
+      Aos.init();
+      Aos.refresh();
     }, []);
     
     function handleFilterChange(key, value){
@@ -54,7 +59,7 @@ const Products = () => {
     }
 
   return (
-    <section className="min-h-screen w-full p-12 pt-24 md:pl-[150px] md:pr-[150px] flex flex-col items-center ">
+    <section className="min-h-screen w-full p-12 pt-24 lg:pl-[150px] lg:pr-[150px] flex flex-col items-center ">
        <nav className="self-start mb-5">
       <ul className="flex">
         <button
@@ -84,7 +89,13 @@ const Products = () => {
 
              {productsList.map(product => {
               return (
-                  <div className="w-[300px] h-auto text-center" key={product.id}>
+                  <div 
+                  className="w-[300px] h-auto text-center" 
+                  key={product.id}
+                  data-aos='zoom-in'
+                  data-aos-easing='ease-in'
+                  data-aos-delay='50'
+                  >
                     <Link 
                     to={product.id}
                     state={{

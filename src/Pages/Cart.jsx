@@ -1,24 +1,33 @@
 import { useDispatch, useSelector } from "react-redux"
-import { decrease, increase, removeItem } from "../Features/Cart/cartSlice"
+import { clearCart, decrease, increase, removeItem } from "../Features/Cart/cartSlice"
 import { useEffect, useState } from "react"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Cart = () => {
+  //For Modal pop-up
   const [openModal, setOpenModal] = useState(false)
 
+  //Getting the required information from the redux cartSlice in the Features/Cart Folder
   const cartItems = useSelector(state => state.cart.cartItems)
   const cartItemsAmt = useSelector(state => state.cart.cartItemsAmt)
+  //To dispatch an action
   const dispatch = useDispatch()
 
   function controlModal(){
     setOpenModal(true)
   }
 
+  function handleClear(){
+    //to dispatch the clear cart functionality setting state.cartItems = [];(empty)
+    dispatch(clearCart());
+    setOpenModal(false);
+  }
+
     useEffect(() => {
       window.scrollTo(0,0)
     }, []);
     
+    //Display for each cartItem in the large Screen, I used a table format display
     const cartItemsList = cartItems.map(item => {
       return(
         <tr key={item.id}>
@@ -48,6 +57,7 @@ const Cart = () => {
       )
     })
 
+    //Display of each items in the cart, I used a flexBox for this
     const FlexCartListItems = cartItems.map(item => {
       return (
         <div className="flex w-full mb-8" key={item.id}>
@@ -69,15 +79,21 @@ const Cart = () => {
         </div>
       )
     })
+    //End;
 
   return (
     <>
-    <section className="w-full min-h-screen p-12 pt-24 md:pl-[150px] md:pr-[150px]">
-      {cartItems.length > 0 ? <div className="flex justify-between w-full items-center mb-9"><h4 className="text-xl font-['Noto'] font-semibold">You have {cartItems.length} item{cartItems.length > 1 ? "s" : ""} in cart</h4><button className=" text-red-400 hover:underline hover:underline-offset-2" onClick={() => controlModal()}>Clear Cart</button></div>  : <h4 className="text-xl font-['Noto'] font-semibold mb-6">No Items in Cart.</h4>}
+    {/* Cart Container */}
+    <section className="w-full min-h-screen p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
+      {/* Dynamic display for whether or not there is an item in cart */}
+      {cartItems.length > 0 ? <div className="flex justify-between w-full items-center mb-9"><h4 className="text-xl font-['Noto'] font-semibold">You have {cartItems.length} item{cartItems.length > 1 ? "s" : ""} in cart</h4><button className=" text-red-400 hover:underline hover:underline-offset-2" onClick={() => controlModal()}>Clear Cart</button></div>  : <h4 className="text-xl font-['Noto'] font-semibold mb-6">No Items in Cart.</h4>} {/*END */}
+
       <div className="flex flex-col w-full h-auto">
         {cartItems.length > 0 && 
         <>
-        <div className="w-full hidden lg:block">
+        {/* Display for when there is an item(s) in cart */}
+         <div className="w-full hidden lg:block">
+          {/* The table heading display for large screen sizes */}
           <table className="w-full">
           <thead>
             <tr className=" font-normal">
@@ -88,6 +104,7 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
+            {/* Display of the cart items in the table for body for large screen size */}
             {cartItemsList}
           </tbody>
         </table>
@@ -98,7 +115,9 @@ const Cart = () => {
           <h4 className="font-semibold">${cartItemsAmt}</h4>
         </div>
       </div>
-      </div>
+      </div>{/* END */}
+
+      {/* Display(flexbox style) of the items in the cart for medium to mobile screen sizes */}
         <div className="lg:hidden w-full max-w-sm">
           {FlexCartListItems}
           <div className="w-full flex justify-between">
@@ -113,18 +132,16 @@ const Cart = () => {
         }
       </div>
     </section>
+    {/* Setting up a modal functionality for when a user clicks the 'CLEAR CART' button */}
     <div className={`absolute w-full h-full flex justify-center items-center bg-black bg-opacity-70 ${openModal ? "block" : "hidden"} top-0 left-0 z-20`}>
       <div className="w-auto h-auto bg-white text-black text-center relative py-10 px-10 rounded">
         <h4 className=" mb-4 font-['Rubik']">Sure you want to clear all cart items?</h4>
         <div className="w-full flex justify-center gap-4">
-          <button className="border-2 border-red-600 px-7 py-2 rounded-full text-red-600 font-semibold">Clear</button>
-          <button className="border-2 border-black px-7 py-2 rounded-full font-semibold">Cancel</button>
+          <button className="border-2 border-red-600 px-7 py-2 rounded-full text-red-600 font-semibold"
+          // dispatching the function that clears the cart which I wrote above 'handleCart' Function
+           onClick={() => handleClear()}>Clear</button>
+          <button className="border-2 border-black px-7 py-2 rounded-full font-semibold" onClick={() => setOpenModal(false)}>Cancel</button>
         </div>
-        <FontAwesomeIcon 
-        icon={faXmark}
-        className="absolute right-[10px] top-[10px] text-xl text-gray-600 cursor-pointer"
-        onClick={() => setOpenModal(false)}
-       />
       </div>
     </div>
     </>
