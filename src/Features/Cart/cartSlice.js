@@ -17,7 +17,7 @@ const cartSlice = createSlice({
             const checkItem = state.cartItems.find(product => product.id === productItem.id);
             if(checkItem){
                 checkItem.itemQty++
-                checkItem.price = price * Number(checkItem.itemQty);
+                checkItem.price = unitPrice * Number(checkItem.itemQty);
                 let amt = 0
                 for(let i = 0; i < state.cartItems.length;  i++){
                     amt += Number(state.cartItems[i].price)
@@ -45,7 +45,7 @@ const cartSlice = createSlice({
             state.cartItems = state.cartItems.filter(item => item.id !== itemSelected.id)
             let amt = 0
                 for(let i = 0; i < state.cartItems.length;  i++){
-                    amt += Number(Number(state.cartItems[i].price) * Number(state.cartItems[i].itemQty))
+                    amt += Number(Number(state.cartItems[i].unitPrice) * Number(state.cartItems[i].itemQty))
                 }
             state.cartItemsAmt = Number(Number(amt).toFixed(2));
         },

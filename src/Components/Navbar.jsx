@@ -52,7 +52,7 @@ const Navbar = () => {
            to="."
            style={handleActive}
            className="hover:underline hover:underline-offset-8 hover:font-bold"
-          onClick={handleProfileBtn}>Home</NavLink>
+          onClick={() => showNav(false)}>Home</NavLink>
            <NavLink 
            to="shop"
            style={handleActive}
@@ -66,7 +66,7 @@ const Navbar = () => {
            onClick={() => showNav(false)}
            >About Us</NavLink>
            {currentUser?.email ? <button 
-        onClick={() => navigate('user')}
+        onClick={handleProfileBtn}
         className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300  sm:hidden"><FontAwesomeIcon icon={faUser} /></button> :  <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 sm:hidden rounded text-center" onClick={handleLoginBtn}>Login</button>}
         </ul>
         <div className="flex items-center gap-4">

@@ -92,7 +92,7 @@ const Cart = () => {
         {cartItems.length > 0 && 
         <>
         {/* Display for when there is an item(s) in cart */}
-         <div className="w-full hidden lg:block">
+         <div className="w-full hidden md:block">
           {/* The table heading display for large screen sizes */}
           <table className="w-full">
           <thead>
@@ -118,7 +118,7 @@ const Cart = () => {
       </div>{/* END */}
 
       {/* Display(flexbox style) of the items in the cart for medium to mobile screen sizes */}
-        <div className="lg:hidden w-full max-w-sm">
+        <div className="md:hidden w-full max-w-sm">
           {FlexCartListItems}
           <div className="w-full flex justify-between">
             <div></div>

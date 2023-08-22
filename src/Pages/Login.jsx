@@ -4,6 +4,10 @@ import { Outlet } from 'react-router-dom'
 
 
 const Login = () => {
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [])
     
   return (
     <section className="w-full h-[100vh] flex">
