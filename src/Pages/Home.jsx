@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/Cart/cartSlice";
+import Contact from "../Components/Contact";
 
 export async function homeLoader(){
   const data = getProducts();
@@ -63,7 +64,7 @@ const Home = () => {
         </div>
        </div> 
        {/* Container for the featured products */}
-       <div className="w-full h-auto lg:pl-[150px] lg:pr-[150px] px-12 pt-8">
+      <div className="w-full h-auto lg:pl-[150px] lg:pr-[150px] px-12 pt-8 bg-[#F8F6F4]">
         {/* Heading div */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -78,8 +79,8 @@ const Home = () => {
           ></FontAwesomeIcon></Link> 
         </div>
        <Suspense fallback={<div className="w-full h-[70vh] flex items-center justify-center">
-      <h2 className="text-2xl font-medium tracking-widest animate-pulse">Loading...</h2>
-    </div>}>
+        <h2 className="text-2xl font-medium tracking-widest animate-pulse">Loading...</h2>
+        </div>}>
       <Await resolve={loaderData.products}>
         {
           (loaderProducts) => {
@@ -120,7 +121,8 @@ const Home = () => {
         }
       </Await>
     </Suspense>
-       </div>
+    </div>
+    <Contact />
     </section>
   )
 }

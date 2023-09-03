@@ -5,6 +5,7 @@ import { faTruckFast, faMedal, faClock, faMoneyBill1Wave } from '@fortawesome/fr
 import { useEffect, useRef, useState } from 'react'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import Contact from '../Components/Contact'
 
 const About = () => {
   const [isIntersect, setIsIntersect] = useState()
@@ -34,7 +35,7 @@ const About = () => {
         <div className="h-[26vh] sm:h-[20vh] md:h-[34vh] md:max-h-60 flex items-center justify-center bg-no-repeat bg-cover bg-center" style={{backgroundImage: `url(${aboutBg})`}}>
           <h2 className="text-5xl sm:text-[72px] font-semibold text-white font-['Noto'] mt-10">About Us</h2>
         </div>
-        <div className='w-full p-12 pt-24 pb-24 md:pl-[150px] md:pr-[150px]'>
+        <div className='w-full p-12 pt-24 pb-4 md:pl-[150px] md:pr-[150px]'>
           <div className='flex flex-col md:justify-center items-center justify-start gap-8 md:flex-row'>
           <img src={serviceBg} alt="" className={`w-[350px] h-[350px] sm:mx-0 aspect-square border-l-[10px] border-b-[10px] transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : '-translate-x-[50%] opacity-0'} border-black object-fill`} ref={ref} />
           <article className={`min-h-[350px] flex transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : 'translate-x-[50%] opacity-0'} flex-col`} ref={ref}>
@@ -86,16 +87,17 @@ const About = () => {
           data-aos='zoom-in'
           data-aos-easing='linear'
           data-aos-delay='100'
-          >
+           className='flex flex-col items-center justify-center'>
           <h4 className='text-center font-["Noto"] text-3xl font-semibold mt-16 mb-2'>Join Our Newsletter</h4>
           <p className='text-center font-["Heebo"] mb-4'>Subscribe to our newsletter to recieve exclusive offers, latest news and updates </p>
           <div 
-          className='w-full text-center'>
-            <input type="email" name="email" id="email" placeholder='Email address' className='border-2 h-10 w-[300px] p-3 rounded mb-2 mr-1' />
+          className='w-full text-center flex flex-col justify-center items-center'>
+            <input type="email" name="email" id="email" placeholder='Email address' className='border-2 h-10 w-[300px] p-3 rounded mb-2 mx-auto' />
             <button className='bg-black text-white py-2 px-5 rounded'>Subscribe</button>
           </div>
           </div>
         </div>
+        <Contact />
     </section>
   )
 }

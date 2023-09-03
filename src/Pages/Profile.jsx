@@ -28,7 +28,7 @@ const Profile = () => {
     <section className="w-full h-[100vh] p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
       <div className="w-full mx-auto max-w-[400px] h-auto">
         <div className="flex p-5 bg-slate-300 rounded mb-1">
-          <div className=" w-[76px] aspect-square border-4 border-[#FFFEC4] rounded-full cursor-pointer mr-4">{/* Image */}
+          <div className=" w-[76px] min-w-[76px] aspect-square border-4 border-[#FFFEC4] rounded-full cursor-pointer mr-4">{/* Image */}
             <img src="" alt="" />
           </div>
           <div>{/* Text */}
