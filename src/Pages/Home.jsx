@@ -1,15 +1,14 @@
 import { Await, Link, defer, useLoaderData, useNavigate } from "react-router-dom"
 import heroImg from "./../Assets/images/hero-img.png"
-import { Suspense, useEffect, useRef, useState } from "react";
-import Aos from "aos";
+import { Suspense, useEffect, } from "react";
 import 'aos/dist/aos.css'
 import { getProducts } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/Cart/cartSlice";
-import Contact from "../Components/Contact";
 import NewsLetter from "../Components/NewsLetter";
+import Banner from "../Components/Banner";
 
 export async function homeLoader(){
   const data = getProducts();
@@ -43,10 +42,10 @@ const Home = () => {
             <h3 className="sm:text-5xl text-4xl font-bold mb-3 md:mb-4  font-['Noto'] md:leading-tight leading-snug">
                 Make your Fashion<br/>Look more<br/>Attractive. 
             </h3>
-            <p className="text-md lg:mb-12 mb-8 max-w-[530px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam architecto sint labore recusandae inventore voluptatem id facere delectus quasi perspiciatis consequatur, natus placeat, cum vel animi distinctio. Nam, dolore voluptatum?</p>
+            <p className="text-md lg:mb-10 mb-8 max-w-[530px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam architecto sint labore recusandae inventore voluptatem id facere delectus quasi perspiciatis consequatur, natus placeat, cum vel animi distinctio. Nam, dolore voluptatum?</p>
             <button 
             onClick={() => navigate("shop")}
-            className="bg-black text-white pt-2 pb-2 pl-4 pr-4"
+            className="bg-black text-white font-['Roboto'] pt-2 pb-2 pl-4 pr-4 rounded-sm"
             >Shop Now</button>
         </div>
         {/* Hero Image */}
@@ -65,11 +64,11 @@ const Home = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className=" w-7 h-[3px] bg-[#303019] mt-[3px]"></div>
-            <h4 className=" text-xl font-['Noto'] font-medium">Top Products</h4>
+            <h4 className=" text-xl font-['Roboto'] font-medium">Featured Products</h4>
           </div>
           <Link 
           to='shop'
-          className="hover:underline-offset-2 hover:underline"><span className="font-medium">See all products</span><FontAwesomeIcon
+          className="hover:underline-offset-2 hover:underline"><span className="text-gray-900 font-['Roboto']">See all products</span><FontAwesomeIcon
           className=" text-xs"
           icon={faChevronRight} 
           ></FontAwesomeIcon></Link> 
@@ -99,12 +98,12 @@ const Home = () => {
                           >
                           <div className="w-full aspect-square">
                           <img src={product.imgUrl} alt={product.name} className="w-full h-full object-fill mb-3" />
-                          <h2 className=" text-base font-medium text-black">{product.name}</h2>
-                          <h4 className="font-semibold">$<span className="text-lg font-semibold">{product.price}</span></h4>
+                          <h2 className=" text-base font-normal font-['Roboto'] text-black">{product.name}</h2>
+                          <h4 className="font-medium">$<span className="text-lg font-semibold">{product.price}</span></h4>
                           </div>
                           </Link>
                           <button 
-                          className="mt-3 border-2 border-black p-3 py-2 rounded-full"
+                          className="mt-3 border-2 border-black p-3 py-2"
                           onClick={() => dispatch(addToCart(product))}
                           >Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
                         </div>
@@ -117,6 +116,8 @@ const Home = () => {
         }
       </Await>
     </Suspense>
+    <Banner />
+    <NewsLetter />
     </div>
     </section>
   )

@@ -136,7 +136,7 @@ const Cart = () => {
       </div>
       {cartItems.length > 0 && <button 
       onClick={() => navigate("order-summary")}
-      className=" self-end bg-gray-900 text-gray-50 p-2 px-3 mt-7 rounded font-['Roboto']">Proceed to checkout</button>}
+      className=" self-end bg-gray-900 text-gray-50 p-2 px-3 mt-7 rounded-sm font-['Roboto']">Proceed to checkout</button>}
     </section>
     {/* Setting up a modal functionality for when a user clicks the 'CLEAR CART' button */}
     <div className={`absolute w-full h-full flex justify-center items-center bg-black bg-opacity-70 ${openModal ? "block" : "hidden"} top-0 left-0 z-20`}>

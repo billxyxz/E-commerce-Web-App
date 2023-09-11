@@ -27,19 +27,19 @@ const ProductDetailPage = () => {
                 <img src={loaderData.imgUrl} alt={loaderData.name} className="w-full h-full object-fill" />
             </div>
             <div className="w-full sm:w-1/2 h-auto p-8">
-                <h2 className="text-lg font-medium font-['Noto'] mb-1">{loaderData.name}</h2>
-                <p className=" text-base font-light mb-2">{loaderData.description}</p>
-                <p className="mb-2">Gender: <span className="uppercase font-['Noto']">{loaderData.gender}</span></p>
+                <h2 className="text-lg font-medium font-['Roboto'] mb-1">{loaderData.name}</h2>
+                <p className=" text-base font-light mb-2 font-['Roboto']">{loaderData.description}</p>
+                <p className="mb-2">Gender: <span className="uppercase font-['Roboto']">{loaderData.gender}</span></p>
                 <p className="mb-12 font-semibold">$<span className="text-lg font-semibold">{loaderData.price}</span></p>
-                <button className="bg-black text-white w-full p-2 uppercase font-medium" onClick={() => dispatch(addToCart(loaderData))}>Add To Cart</button>
+                <button className="bg-black text-white w-full p-2 uppercase font-medium font-['Roboto']" onClick={() => dispatch(addToCart(loaderData))}>Add To Cart</button>
             </div>
         </div>
   return (
     <section className="h-auto w-full p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
         <Link 
-        className="hover:underline hover:underline-offset-4 hover:text-blue-700"
+        className="hover:underline font-['Roboto'] hover:underline-offset-2"
         to={location.state ? `../shop/${location.state.search}` : ".."}
-        ><FontAwesomeIcon icon={faChevronLeft} className=" text-xs"></FontAwesomeIcon> <span className="font-lg font-medium">Back</span></Link>
+        ><FontAwesomeIcon icon={faChevronLeft} className=" text-xs"></FontAwesomeIcon> <span className="font-lg text-gray-900">Back</span></Link>
         {productDetailEl}
     </section>
   )

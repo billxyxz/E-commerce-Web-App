@@ -103,11 +103,11 @@ const Products = () => {
                     >
                     <div className="w-full aspect-square">
                     <img src={product.imgUrl} alt={product.name} className="w-full h-full object-fill mb-3" />
-                    <h2 className=" text-base font-medium text-black">{product.name}</h2>
-                    <h4 className="font-semibold">$<span className="text-lg font-semibold">{product.price}</span></h4>
+                    <h2 className=" text-base font-['Roboto'] text-black">{product.name}</h2>
+                    <h4 className="font-medium">$<span className="text-lg font-semibold">{product.price}</span></h4>
                     </div>
                     </Link>
-                    <button className="mt-3 border-2 border-black p-3 py-2 rounded-full" onClick={() => handleCart(product)}>Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
+                    <button className="mt-3 border-2 border-black p-3 py-2" onClick={() => handleCart(product)}>Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
                   </div>
                )
             })}

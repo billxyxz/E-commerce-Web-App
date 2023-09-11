@@ -113,7 +113,7 @@ const ShippingForm = () => {
             </div>
             <button 
             onClick={() => navigate("/successful")}
-            className=" bg-gray-900 text-gray-50 p-2 px-4 rounded mt-5 self-end font-['Roboto']">Continue to payment</button>
+            className=" bg-gray-900 text-gray-50 p-2 px-4 rounded-sm mt-5 self-end font-['Roboto']">Continue to payment</button>
         </form>
     </div>
   )
