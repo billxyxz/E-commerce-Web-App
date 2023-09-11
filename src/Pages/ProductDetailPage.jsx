@@ -16,7 +16,7 @@ const ProductDetailPage = () => {
     const loaderData = useLoaderData()
     const location = useLocation();
     const dispatch = useDispatch()
-    console.log(location.state);
+
     useEffect(() => {
         window.scrollTo(0,0)
     }, []);

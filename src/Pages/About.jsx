@@ -3,9 +3,8 @@ import aboutBg from './../Assets/images/about-bg.png'
 import serviceBg from './../Assets/images/service-bg.jpg'
 import { faTruckFast, faMedal, faClock, faMoneyBill1Wave } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from 'react'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 import Contact from '../Components/Contact'
+import NewsLetter from '../Components/NewsLetter'
 
 const About = () => {
   const [isIntersect, setIsIntersect] = useState()
@@ -16,8 +15,6 @@ const About = () => {
   useEffect(() => {
     window.scrollTo(0,0)
 
-    Aos.init();
-    Aos.refresh();
   }, []);
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const About = () => {
           </div>
           <h3 className='text-center font-["Noto"] text-3xl font-semibold mt-16 mb-10'>Our Features</h3>
           <div 
-          className='flex flex-wrap justify-center sm:justify-center  gap-8'>
+          className='flex flex-wrap justify-center sm:justify-center gap-8 mb-16'>
             <div 
             data-aos='zoom-in'
             data-aos-easing='linear'
@@ -83,20 +80,8 @@ const About = () => {
               <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, dolores.</p>
             </div>
           </div>
-          <div 
-          data-aos='zoom-in'
-          data-aos-easing='linear'
-          data-aos-delay='100'
-           className='flex flex-col items-center justify-center'>
-          <h4 className='text-center font-["Noto"] text-3xl font-semibold mt-16 mb-2'>Join Our Newsletter</h4>
-          <p className='text-center font-["Heebo"] mb-4'>Subscribe to our newsletter to recieve exclusive offers, latest news and updates </p>
-          <div 
-          className='w-full text-center flex flex-col justify-center items-center'>
-            <input type="email" name="email" id="email" placeholder='Email address' className='border-2 h-10 w-[300px] p-3 rounded mb-2 mx-auto' />
-            <button className='bg-black text-white py-2 px-5 rounded'>Subscribe</button>
-          </div>
-          </div>
         </div>
+        <NewsLetter />
         <Contact />
     </section>
   )

@@ -11,6 +11,13 @@ import { AuthProvider } from './Context/AuthContext'
 import Signup from './Components/Signup'
 import Signin from './Components/Signin'
 import Profile from './Pages/Profile'
+import OrderLayout from './Components/OrderLayout'
+import OrderSummary from './Pages/OrderSummary'
+import Successful from './Pages/Successful'
+import RequireAuth from './Pages/RequireAuth'
+import { useEffect } from 'react'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -41,7 +48,19 @@ const router = createBrowserRouter(createRoutesFromElements(
         />
         <Route 
         path='cart'
-        element={<Cart />}
+        element={<OrderLayout />}>
+            <Route
+            index
+            element={<Cart />} 
+            />
+            <Route 
+            path='order-summary'
+            element={<RequireAuth><OrderSummary /></RequireAuth>}
+            />
+        </Route>
+        <Route 
+        path='successful'
+        element={<Successful />}
         />
         <Route
         path='login'
@@ -63,6 +82,11 @@ const router = createBrowserRouter(createRoutesFromElements(
 ))
 
 function App() {
+    useEffect(() => {
+        Aos.init();
+        Aos.refresh();
+    }, [])
+
     return (
         <AuthProvider>
             <RouterProvider router={router} />

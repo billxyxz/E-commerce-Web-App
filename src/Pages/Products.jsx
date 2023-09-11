@@ -35,8 +35,6 @@ const Products = () => {
     useEffect(() => {
       window.scrollTo(0,0);
 
-      Aos.init();
-      Aos.refresh();
     }, []);
     
     function handleFilterChange(key, value){
@@ -60,7 +58,7 @@ const Products = () => {
 
   return (
     <section className="min-h-screen w-full p-12 pt-24 lg:pl-[150px] lg:pr-[150px] flex flex-col items-center ">
-       <nav className="self-start mb-5">
+      <nav className="self-start mb-5 flex gap-6">
       <ul className="flex">
         <button
         onClick={() => handleFilterChange("type", null)}

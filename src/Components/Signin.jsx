@@ -9,14 +9,14 @@ const Signin = () => {
     const {signin} = useAuthContext()
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location);
+    const redirectPath = location.state || "/"
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('')
         try{
             await signin(emailRef.current.value, passwordRef.current.value)
-            navigate("/", {replace: true})
+            navigate(redirectPath, {replace: true})
         }catch(err){
             setError(err.message)
             console.log(err.message);

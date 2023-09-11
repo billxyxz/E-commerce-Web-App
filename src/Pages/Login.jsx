@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, } from 'react'
 import illustration from './../Assets/images/shopping-illustration.png'
 import { Outlet } from 'react-router-dom'
 

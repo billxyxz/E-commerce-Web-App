@@ -9,11 +9,12 @@ import { faCartShopping, faChevronRight } from "@fortawesome/free-solid-svg-icon
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/Cart/cartSlice";
 import Contact from "../Components/Contact";
+import NewsLetter from "../Components/NewsLetter";
 
 export async function homeLoader(){
   const data = getProducts();
   if(!data.ok){
-    console.log("error")
+    console.log("error");
   }
 
   return defer({products: data})
@@ -21,18 +22,13 @@ export async function homeLoader(){
 
 const Home = () => {
   const navigate = useNavigate()
-  const [showHero, setShowHero] = useState(false);
   const loaderData = useLoaderData();
   const dispatch = useDispatch();
-  console.log(loaderData)
 
   useEffect(() => {
     //To make the page scroll to the top when it's routed to view
     window.scrollTo(0,0)
 
-    //AOS library animation
-    Aos.init();
-    Aos.refresh();
   }, []);
 
   return (
@@ -44,7 +40,7 @@ const Home = () => {
         data-aos-easing='ease-in'
         data-aos-duration='600'
         className=" w-full md:w-1/2">
-            <h3 className="sm:text-5xl text-4xl font-bold mb-4 font-['Noto']">
+            <h3 className="sm:text-5xl text-4xl font-bold mb-4 font-['Noto'] md:leading-tight">
                 Make your Fashion<br/>Look more<br/>Attractive. 
             </h3>
             <p className="text-md lg:mb-12 mb-8 max-w-[530px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam architecto sint labore recusandae inventore voluptatem id facere delectus quasi perspiciatis consequatur, natus placeat, cum vel animi distinctio. Nam, dolore voluptatum?</p>
@@ -56,7 +52,7 @@ const Home = () => {
         {/* Hero Image */}
         <div 
         className="h-full w-1/2 hidden md:flex"
-        data-aos='fade-left'
+        data-aos='zoom-in'
         data-aos-easing='ease-in'
         data-aos-duration='600'
         >
@@ -122,7 +118,6 @@ const Home = () => {
       </Await>
     </Suspense>
     </div>
-    <Contact />
     </section>
   )
 }

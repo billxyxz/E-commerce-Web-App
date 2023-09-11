@@ -1,19 +1,19 @@
-import { faUser } from "@fortawesome/free-regular-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useAuthContext } from "../Context/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { clearCart } from "../Features/Cart/cartSlice"
 
 const Profile = () => {
   const { currentUser, logout } = useAuthContext()
+  const dispatch = useDispatch();
   const navigate = useNavigate()
-  console.log(currentUser)
 
   async function handleLogout(){
     try{
       await logout()
+      dispatch(clearCart());
       navigate('/')
-      console.log("You are logged out!")
     }catch(err){
       console.log(err.message)
     }

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { clearCart, decrease, increase, removeItem } from "../Features/Cart/cartSlice"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Cart = () => {
@@ -11,7 +12,9 @@ const Cart = () => {
   const cartItems = useSelector(state => state.cart.cartItems)
   const cartItemsAmt = useSelector(state => state.cart.cartItemsAmt)
   //To dispatch an action
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   function controlModal(){
     setOpenModal(true)
@@ -84,7 +87,7 @@ const Cart = () => {
   return (
     <>
     {/* Cart Container */}
-    <section className="w-full min-h-screen p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
+    <section className="p-12 pt-0 min-h-screen lg:pl-[150px] lg:pr-[150px] flex flex-col">
       {/* Dynamic display for whether or not there is an item in cart */}
       {cartItems.length > 0 ? <div className="flex justify-between w-full items-center mb-9"><h4 className="text-xl font-['Noto'] font-semibold">You have {cartItems.length} item{cartItems.length > 1 ? "s" : ""} in cart</h4><button className=" text-red-400 hover:underline hover:underline-offset-2" onClick={() => controlModal()}>Clear Cart</button></div>  : <h4 className="text-xl font-['Noto'] font-semibold mb-6">No Items in Cart.</h4>} {/*END */}
 
@@ -131,6 +134,9 @@ const Cart = () => {
         </>
         }
       </div>
+      {cartItems.length > 0 && <button 
+      onClick={() => navigate("order-summary")}
+      className=" self-end bg-gray-900 text-gray-50 p-2 px-3 mt-7 rounded">Proceed to checkout</button>}
     </section>
     {/* Setting up a modal functionality for when a user clicks the 'CLEAR CART' button */}
     <div className={`absolute w-full h-full flex justify-center items-center bg-black bg-opacity-70 ${openModal ? "block" : "hidden"} top-0 left-0 z-20`}>

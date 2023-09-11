@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { useAuthContext } from '../Context/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const emailRef = useRef('')
@@ -8,7 +8,8 @@ const Signup = () => {
     const passwordConfirmRef = useRef('')
     const [error, setError] = useState('')
     const {signup} = useAuthContext()
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,7 +49,7 @@ const Signup = () => {
                     <input type="password" id='checkPassword' placeholder='Re-enter password' className='border-2 w-full px-2 py-1 outline-none rounded-sm' ref={passwordConfirmRef} />
                 </div>
                 <button className='bg-black text-white self-center px-6 py-[10px] uppercase text-sm font-semibold mb-2' type='submit'>Signup</button>
-                <p className='text-center' >Already have an account? <Link to='signin' replace className='hover:underline-offset-2 hover:underline'>Login</Link> </p>
+                <p className='text-center' >Already have an account? <button onClick={() => navigate("signin", {state: location.state?.path})} className='hover:underline-offset-2 hover:underline'>Login</button> </p>
             </form>
   )
 }
