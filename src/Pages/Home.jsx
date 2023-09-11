@@ -40,7 +40,7 @@ const Home = () => {
         data-aos-easing='ease-in'
         data-aos-duration='600'
         className=" w-full md:w-1/2">
-            <h3 className="sm:text-5xl text-4xl font-bold mb-4 font-['Noto'] md:leading-tight">
+            <h3 className="sm:text-5xl text-4xl font-bold mb-3 md:mb-4  font-['Noto'] md:leading-tight leading-snug">
                 Make your Fashion<br/>Look more<br/>Attractive. 
             </h3>
             <p className="text-md lg:mb-12 mb-8 max-w-[530px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam architecto sint labore recusandae inventore voluptatem id facere delectus quasi perspiciatis consequatur, natus placeat, cum vel animi distinctio. Nam, dolore voluptatum?</p>

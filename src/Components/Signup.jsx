@@ -48,7 +48,7 @@ const Signup = () => {
                     <label htmlFor="checkPassword" className='block mb-1 font-medium'>Confirm Password</label>
                     <input type="password" id='checkPassword' placeholder='Re-enter password' className='border-2 w-full px-2 py-1 outline-none rounded-sm' ref={passwordConfirmRef} />
                 </div>
-                <button className='bg-black text-white self-center px-6 py-[10px] uppercase text-sm font-semibold mb-2' type='submit'>Signup</button>
+                <button className='bg-black text-white self-center px-6 py-[10px] uppercase text-sm font-semibold mb-2 font-["Roboto"]' type='submit'>Signup</button>
                 <p className='text-center' >Already have an account? <button onClick={() => navigate("signin", {state: location.state?.path})} className='hover:underline-offset-2 hover:underline'>Login</button> </p>
             </form>
   )

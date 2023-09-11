@@ -77,7 +77,7 @@ const Navbar = () => {
         {nav ? <Close navController={handleNav} /> : <Hamburger navController={handleNav}  />}
         {currentUser?.email ? <button 
         onClick={() => navigate('user')}
-        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300 hidden sm:block"><FontAwesomeIcon icon={faUser} /></button> : <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 rounded text-center hidden sm:block -mt-1" onClick={handleLoginBtn}>Login</button>}
+        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300 hidden sm:block"><FontAwesomeIcon icon={faUser} /></button> : <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 rounded text-center hidden sm:block -mt-1 font-['Roboto']" onClick={handleLoginBtn}>Login</button>}
         </div>
     </nav>
   )

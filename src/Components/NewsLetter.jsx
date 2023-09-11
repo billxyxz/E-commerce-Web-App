@@ -13,7 +13,7 @@ const NewsLetter = () => {
         <div 
         className='w-full text-center flex flex-col justify-center items-center'>
           <input type="email" name="email" id="email" placeholder='Email address' className='border-2 h-10 w-[300px] p-3 rounded mb-2 mx-auto' />
-          <button className='bg-black text-white py-2 px-5 rounded'>Subscribe</button>
+          <button className='bg-black text-white py-2 px-5 rounded font-["Roboto"]'>Subscribe</button>
         </div>
       </div>
      </div>

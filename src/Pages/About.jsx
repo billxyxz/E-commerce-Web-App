@@ -38,7 +38,7 @@ const About = () => {
           <article className={`min-h-[350px] flex transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : 'translate-x-[50%] opacity-0'} flex-col`} ref={ref}>
             <h3 className='font-["Noto"] text-2xl font-semibold mb-3'>Know About Our Business History</h3>
             <p className='font-["Rubik"] font-extralight max-h-52 overflow-hidden'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora esse in itaque quaerat provident repudiandae, aliquam praesentium ea libero ipsam eveniet debitis excepturi aut voluptates corporis perferendis eligendi vitae facere odio, harum accusantium perspiciatis alias molestiae? Quos harum rem itaque doloremque odit reprehenderit suscipit, nisi hic mollitia necessitatibus, placeat id sapiente quae fuga repellendus! Veritatis repellendus nemo corrupti commodi quam.</p>
-            <button className="bg-black text-white pt-2 pb-2 pl-4 pr-4 place-self-start mt-10">Contact Us</button>
+            <button className="bg-black text-white pt-2 pb-2 pl-4 pr-4 place-self-start mt-10 font-['Roboto']">Learn more</button>
           </article>
           </div>
           <h3 className='text-center font-["Noto"] text-3xl font-semibold mt-16 mb-10'>Our Features</h3>

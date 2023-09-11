@@ -38,7 +38,7 @@ const Signin = () => {
                     <label htmlFor="password" className='block mb-1 font-medium'>Password</label>
                     <input type="password" id='password' placeholder='Enter password' className='border-2 w-full px-2 py-1 outline-none rounded-sm' ref={passwordRef} />
                 </div>
-                <button className='bg-black text-white self-center px-6 py-2 uppercase mb-2' type='submit'>Signin</button>
+                <button className='bg-black text-white self-center px-6 py-2 uppercase mb-2 font-["Roboto"]' type='submit'>Signin</button>
                 <p className='text-center' >Dont have an account? <Link to='../../login' replace className="hover:underline-offset-2 hover:underline">Signup</Link></p>
             </form>
   )
