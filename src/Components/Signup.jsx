@@ -20,7 +20,7 @@ const Signup = () => {
         try{
             setError('')
             await signup(emailRef.current.value, passwordRef.current.value)
-            navigate('signin', {replace: true})
+            navigate('signin', {state: location.state?.path, replace: true})
         }catch(err){
             setError(err.message)
             console.log(err.message);

@@ -44,6 +44,7 @@ const Navbar = () => {
     } 
   }
 
+
   return (
     <nav className="flex justify-between h-16 md:h-[70px] fixed z-10 w-full items-center pr-12 pl-12 lg:pr-[150px] lg:pl-[150px] bg-[#FFFEC4]">
         <h3 className="text-2xl font-logo font-bold"><Link to=".">BillFashion</Link></h3>
@@ -67,12 +68,18 @@ const Navbar = () => {
            >About Us</NavLink>
            {currentUser?.email ? <button 
         onClick={handleProfileBtn}
-        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300  sm:hidden"><FontAwesomeIcon icon={faUser} /></button> :  <button className="hover:bg-black outline outline-2 hover:text-white pt-1 pb-1 pl-4 pr-4 sm:hidden rounded text-center" onClick={handleLoginBtn}>Login</button>}
+        className="text-xl text-gray-300 -mt-2 border-2 w-9 aspect-square rounded-full border-gray-300  sm:hidden"><FontAwesomeIcon icon={faUser} /></button> :  <button className="hover:bg-black outline outline-2 hover:text-white py-2 px-7 sm:hidden rounded text-center" onClick={handleLoginBtn}>Login</button>}
         </ul>
         <div className="flex items-center gap-4">
-        <div className="relative">
-        <FontAwesomeIcon icon={faCartShopping} onClick={() => navigate('cart')} className=" cursor-pointer text-xl" />
-        <div className=" w-[18px] h-[18px] rounded-full absolute bg-black -top-2 -right-2 text-white flex justify-center items-center text-center text-sm font-semibold">{cartItemsQty}</div>
+        <div
+        onClick={() => navigate('cart')}
+        className="cursor-pointer"
+        >
+          <div 
+          className="relative">
+          <FontAwesomeIcon icon={faCartShopping} className=" text-xl" />
+          <div className=" w-[18px] h-[18px] rounded-full absolute bg-black -top-2 -right-2 text-white flex justify-center items-center text-center text-sm font-semibold">{cartItemsQty}</div>
+          </div>
         </div>
         {nav ? <Close navController={handleNav} /> : <Hamburger navController={handleNav}  />}
         {currentUser?.email ? <button 
