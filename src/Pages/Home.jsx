@@ -42,7 +42,7 @@ const Home = () => {
             <h3 className="sm:text-5xl text-4xl font-bold mb-3 md:mb-4  font-['Noto'] md:leading-tight leading-snug">
                 Make your Fashion<br/>Look more<br/>Attractive. 
             </h3>
-            <p className="text-md lg:mb-10 mb-8 max-w-[530px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam architecto sint labore recusandae inventore voluptatem id facere delectus quasi perspiciatis consequatur, natus placeat, cum vel animi distinctio. Nam, dolore voluptatum?</p>
+            <p className="text-md lg:mb-10 mb-8 max-w-[530px]">At BillFashion, we believe that fashion is not just about clothes; it's a reflection of your personality and a way to express yourself. That's why we're here to help you find the perfect outfit for every occasion.</p>
             <button 
             onClick={() => navigate("shop")}
             className="bg-black text-white font-['Roboto'] pt-2 pb-2 pl-4 pr-4 rounded-sm"
@@ -61,7 +61,7 @@ const Home = () => {
        {/* Container for the featured products */}
       <div className="w-full h-auto lg:pl-[150px] lg:pr-[150px] px-12 pt-8 bg-[#F8F6F4]">
         {/* Heading div */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row gap-5 justify-start items-start md:justify-between md:items-center">
           <div className="flex items-center gap-2">
             <div className=" w-7 h-[3px] bg-[#303019] mt-[3px]"></div>
             <h4 className=" text-xl font-['Roboto'] font-medium">Featured Products</h4>

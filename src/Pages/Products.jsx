@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/Cart/cartSlice";
 import Aos from "aos";
 import 'aos/dist/aos.css'
+import Banner from "../Components/Banner";
 
 
 
