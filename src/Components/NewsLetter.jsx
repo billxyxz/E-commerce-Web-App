@@ -12,8 +12,8 @@ const NewsLetter = () => {
         <p className='text-center font-["Heebo"] mb-4'>Subscribe to our newsletter to recieve exclusive offers, latest news and updates </p>
         <div 
         className='w-full text-center flex flex-col justify-center items-center'>
-          <input type="email" name="email" id="email" placeholder='Email address' className='border-2 border-gray-900 h-10 w-[300px] p-3 rounded mb-2 mx-auto' />
-          <button className='bg-black text-white py-2 px-5 rounded font-["Roboto"]'>Subscribe</button>
+          <input type="email" name="email" id="email" placeholder='Email address' className='border-2 border-gray-900 h-10 w-[300px] p-3 rounded mb-3 mx-auto' />
+          <button className='bg-black text-white py-[10px] px-6 md:py-2 md:px-5 rounded font-["Roboto"]'>Subscribe</button>
         </div>
       </div>
      </div>

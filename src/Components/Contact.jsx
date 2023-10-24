@@ -23,7 +23,7 @@ const Contact = () => {
           </article>
           <div className="py-4 w-full">{/*form container */}
             <h4 className="text-center text-3xl font-['Roboto'] font-medium mb-3">Send a message</h4>
-            <form className="w-full md:max-w-[400px]" onSubmit={handleSubmit}>
+            <form className="w-full md:max-w-[400px] flex flex-col" onSubmit={handleSubmit}>
               <label htmlFor="name" className=" font-semibold">Name:</label>
               <input 
               type="text" 
@@ -45,7 +45,7 @@ const Contact = () => {
               placeholder="Enter text ..."
               className="outline-none block resize-none border-black border-b w-full mb-4 bg-transparent p-1 pl-3"></textarea>
               <button 
-              className="bg-black text-white pt-2 pb-2 pl-4 pr-4 text-lg font-['Roboto']">Send</button>
+              className="bg-black text-white pt-2 pb-2 px-5 text-lg font-['Roboto'] md:self-start">Send</button>
             </form>
           </div>
         </div>{/*for the email, tel */}

@@ -7,10 +7,9 @@ import Contact from '../Components/Contact'
 import NewsLetter from '../Components/NewsLetter'
 
 const About = () => {
-  const [isIntersect, setIsIntersect] = useState()
+  const [isIntersect, setIsIntersect] = useState();
+  const [readMore, setReadMore] = useState(false);
   const ref = useRef()
-
-  console.log(isIntersect);
 
   useEffect(() => {
     window.scrollTo(0,0)
@@ -37,8 +36,11 @@ const About = () => {
           <img src={serviceBg} alt="" className={`w-[350px] h-[340px] sm:mx-0 aspect-square border-l-[6px] border-b-[6px] transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : '-translate-x-[50%] opacity-0'} border-black object-fill`} ref={ref} />
           <article className={`min-h-[350px] flex transition-all duration-[1200ms] ${isIntersect ? 'translate-x-0' : 'translate-x-[50%] opacity-0'} flex-col`} ref={ref}>
             <h3 className='font-["Roboto"] text-xl font-medium mb-3'>Know About Our Business History</h3>
-            <p className='font-["Roboto"] tracking-wide max-h-52 overflow-hidden'>Welcome to BillFashion, where fashion meets affordability. We're passionate about making style accessible to everyone, offering a wide range of on-trend clothing and accessories. Our mission is to empower you to express your unique personality through fashion without the hefty price tag. With a commitment to quality and customer satisfaction, BillFashion is your go-to destination for chic, budget-friendly shopping. Join our fashion-forward community and redefine your wardrobe with BillFashion. Elevate your style, effortlessly.</p>
-            <button className="bg-black text-white pt-2 pb-2 pl-4 pr-4 place-self-start mt-10 font-['Roboto'] rounded-sm">Learn more</button>
+            <p className={`font-["Roboto"] tracking-wide ${readMore ? "" : "max-h-[198px] overflow-hidden"} transition-all`}>Welcome to BillFashion, where fashion meets affordability. We're passionate about making style accessible to everyone, offering a wide range of on-trend clothing and accessories. Our mission is to empower you to express your unique personality through fashion without the hefty price tag. With a commitment to quality and customer satisfaction, BillFashion is your go-to destination for chic, budget-friendly shopping. Join our fashion-forward community and redefine your wardrobe with BillFashion. Elevate your style, effortlessly.</p>
+            <button 
+            onClick={() => setReadMore(!readMore)}
+            className="bg-black text-white pt-2 pb-2 pl-4 pr-4 place-self-start mt-6 font-['Roboto'] rounded-sm"
+            >Read more</button>
           </article>
           </div>
           <h3 className='text-center font-["Roboto"] text-3xl font-semibold mt-16 mb-10'>Our Features</h3>
@@ -47,7 +49,7 @@ const About = () => {
             <div 
             data-aos='zoom-in'
             data-aos-easing='linear'
-            className='w-[220px] h-[220px] bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
+            className='w-[235px] md:w-[220px] aspect-square bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
               <FontAwesomeIcon icon={faTruckFast} className='text-4xl mb-4' />
               <h4 className='text-xl mb-1 font-medium font-["Roboto"]'>Free Delivery</h4>
               <p className='text-sm'>Enjoy free and convenient delivery options for eligible orders.</p>
@@ -56,7 +58,7 @@ const About = () => {
             data-aos='zoom-in'
             data-aos-easing='linear'
             data-aos-delay='100'
-            className='w-[220px] h-[220px] bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
+            className='w-[235px] md:w-[220px] aspect-square bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
               <FontAwesomeIcon icon={faMedal} className='text-4xl mb-4' />
               <h4 className='text-xl mb-1 font-medium font-["Roboto"]'> Quality Service</h4>
               <p className='text-sm'>Dedicated to providing top-notch customer service and product quality.</p>
@@ -65,7 +67,7 @@ const About = () => {
             data-aos='zoom-in'
             data-aos-easing='linear'
             data-aos-delay='200'
-            className='w-[220px] h-[220px] bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
+            className='w-[235px] md:w-[220px] aspect-square bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
               <FontAwesomeIcon icon={faMoneyBill1Wave} className='text-4xl mb-4' />
               <h4 className='text-xl mb-1 font-medium font-["Roboto"]'>Cash Back</h4>
               <p className='text-sm'>Earn cashback rewards on eligible purchases, saving you money.</p>
@@ -74,7 +76,7 @@ const About = () => {
             data-aos='zoom-in'
             data-aos-easing='linear'
             data-aos-delay='300'
-            className='w-[220px] h-[220px] bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
+            className='w-[235px] md:w-[220px] aspect-square bg-white text-black shadow-xl hover:border-b-2 hover:border-black transition-all duration-150 ease-linear text-center p-8 rounded-lg'>
               <FontAwesomeIcon icon={faClock} className='text-4xl mb-4' />
               <h4 className='text-xl mb-1 font-medium font-["Roboto"]'>24/7 Support</h4>
               <p className='text-sm'>Here at BillFashion, we offer 24/7 customer support via chat, email, or phone.</p>

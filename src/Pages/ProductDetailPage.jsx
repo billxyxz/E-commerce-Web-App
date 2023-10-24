@@ -35,7 +35,7 @@ const ProductDetailPage = () => {
             </div>
         </div>
   return (
-    <section className="h-auto w-full p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
+    <section className="h-auto w-full p-9 pt-24 lg:pl-[150px] lg:pr-[150px]">
         <Link 
         className="hover:underline font-['Roboto'] hover:underline-offset-2"
         to={location.state ? `../shop/${location.state.search}` : ".."}
