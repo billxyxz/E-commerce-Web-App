@@ -36,8 +36,6 @@ const Navbar = () => {
     showNav(false);
   }
 
-  console.log(nav)
-
   function handleActive({isActive}){
     return {
       fontWeight: isActive ? "700" : "",
@@ -47,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between h-16 md:h-[70px] fixed z-10 w-full items-center pr-12 pl-12 lg:pr-[150px] lg:pl-[150px] bg-[#FFFEC4]">
-        <h3 className="text-2xl font-logo font-bold"><Link to=".">BillFashion</Link></h3>
+        <h3 className="text-[26px] font-logo font-bold"><Link to=".">BillFashion</Link></h3>
         <ul className={`font-navlinks w-full sm:w-auto top-16 left-0 sm:top-0  items-center justify-center sm:h-auto p-16 sm:p-0 flex flex-col sm:flex-row bg-black sm:bg-transparent text-white sm:text-black sm:gap-6 md:gap-16 gap-16 absolute sm:relative sm:translate-x-0 ${nav ? "" : "translate-x-full"} transition-transform`}>
            <NavLink 
            to="."

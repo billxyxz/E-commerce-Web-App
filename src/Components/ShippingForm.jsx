@@ -131,7 +131,7 @@ const ShippingForm = () => {
               </div>
             </div>
             <button 
-            className=" bg-gray-900 text-gray-50 p-2 px-4 rounded-sm mt-5 self-end font-['Roboto']">Continue to payment</button>
+            className=" bg-gray-900 text-gray-50 p-[10px] px-[18px] md:p-2 md:px-4 rounded-sm mt-5 self-end font-['Roboto']">Continue to payment</button>
         </form>
     </div>
   )

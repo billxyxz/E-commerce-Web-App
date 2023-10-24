@@ -39,13 +39,13 @@ const Home = () => {
         data-aos-easing='ease-in'
         data-aos-duration='600'
         className=" w-full md:w-1/2">
-            <h3 className="sm:text-5xl text-4xl font-bold mb-3 md:mb-4  font-['Noto'] md:leading-tight leading-snug">
+            <h3 className="sm:text-5xl text-[40px] font-bold mb-3 md:mb-4  font-['Noto'] md:leading-tight leading-snug">
                 Make your Fashion<br/>Look more<br/>Attractive. 
             </h3>
-            <p className="text-md lg:mb-10 mb-8 max-w-[530px]">At BillFashion, we believe that fashion is not just about clothes; it's a reflection of your personality and a way to express yourself. That's why we're here to help you find the perfect outfit for every occasion.</p>
+            <p className="text-md lg:mb-7 mb-5 max-w-[530px] lg:leading-normal">At BillFashion, we believe that fashion is not just about clothes; it's a reflection of your personality and a way to express yourself. That's why we're here to help you find the perfect outfit for every occasion.</p>
             <button 
             onClick={() => navigate("shop")}
-            className="bg-black text-white font-['Roboto'] pt-2 pb-2 pl-4 pr-4 rounded-sm"
+            className="bg-black text-white font-['Roboto'] py-[10px] px-5 md:py-2 md:px-4 rounded-sm"
             >Shop Now</button>
         </div>
         {/* Hero Image */}
