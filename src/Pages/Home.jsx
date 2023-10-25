@@ -4,11 +4,12 @@ import { Suspense, useEffect, } from "react";
 import 'aos/dist/aos.css'
 import { getProducts } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../Features/Cart/cartSlice";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import NewsLetter from "../Components/NewsLetter";
 import Banner from "../Components/Banner";
+import ProductCard from "../Components/ProductCard";
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 export async function homeLoader(){
   const data = getProducts();
@@ -22,7 +23,6 @@ export async function homeLoader(){
 const Home = () => {
   const navigate = useNavigate()
   const loaderData = useLoaderData();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     //To make the page scroll to the top when it's routed to view
@@ -33,7 +33,8 @@ const Home = () => {
   return (
     //Hero Section Container
     <section className="w-full relative justify-center min-h-[100vh] overflow-x-hidden">
-       <div className="flex align-middle h-auto w-full bg-[#FFFEC4]  p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
+      <ToastContainer className="top-20 max-w-[274px] mx-auto" />
+      <div className="flex align-middle h-auto w-full bg-[#FFFEC4]  p-12 pt-24 lg:pl-[150px] lg:pr-[150px]">
         <div 
         data-aos='zoom-in'
         data-aos-easing='ease-in'
@@ -86,27 +87,7 @@ const Home = () => {
                 {
                   topProducts.map(product => {
                     return (
-                        <div 
-                        className="w-[250px] h-auto text-center" 
-                        key={product.id}
-                        data-aos='zoom-in'
-                        data-aos-easing='ease-in'
-                        data-aos-delay='50'
-                        >
-                          <Link 
-                          to={`shop/${product.id}`}
-                          >
-                          <div className="w-full aspect-square">
-                          <img src={product.imgUrl} alt={product.name} className="w-full h-full object-fill mb-3" />
-                          <h2 className=" text-base font-normal font-['Roboto'] text-black">{product.name}</h2>
-                          <h4 className="font-medium">$<span className="text-lg font-semibold">{product.price}</span></h4>
-                          </div>
-                          </Link>
-                          <button 
-                          className="mt-3 border-2 border-black p-3 py-2"
-                          onClick={() => dispatch(addToCart(product))}
-                          >Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
-                        </div>
+                      <ProductCard key={product.id} product={product} dir="home" />
                      )
                   })
                 }

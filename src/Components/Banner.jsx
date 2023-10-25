@@ -4,7 +4,12 @@ import bannerImg from "../Assets/images/bannerImg.jpg"
 
 const Banner = () => {
   return (
-    <div className="mt-8 w-full flex flex-col md:flex-row rounded-full">
+    <div 
+    data-aos="fade-up"
+    data-aos-easing='linear'
+    data-aos-delay='100'
+    data-aos-duration="500"
+    className="mt-8 w-full flex flex-col md:flex-row rounded-full">
         <div className="w-full h-[250px] md:h-auto xl:h-[300px]  object-cover object-center">
             <img src={bannerImg} alt="" className=" w-full h-full" />
         </div>

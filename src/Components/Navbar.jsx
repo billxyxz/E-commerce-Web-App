@@ -10,19 +10,10 @@ const Navbar = () => {
   const [nav, showNav] = useState(false)
   const navigate = useNavigate()
   const cartItemsQty = useSelector(state => state.cart.cartItemsQty)
-  const { currentUser, logout } = useAuthContext()
+  const { currentUser, } = useAuthContext()
 
   function handleNav(){
     showNav(prev => !prev)
-  }
-
-  async function handleLogout(){
-    try{
-      await logout()
-      console.log("You are logged out!")
-    }catch(err){
-      console.log(err.message)
-    }
   }
 
   function handleProfileBtn(){

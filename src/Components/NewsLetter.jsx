@@ -6,6 +6,7 @@ const NewsLetter = () => {
       data-aos='zoom-in'
       data-aos-easing='linear'
       data-aos-delay='100'
+      data-aos-duration="500"
       className='flex flex-col items-center justify-center'
     >
         <h4 className='text-center font-["Roboto"] text-3xl font-semibold mb-2'>Join Our Newsletter</h4>

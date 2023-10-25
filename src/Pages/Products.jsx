@@ -1,14 +1,13 @@
 import { Suspense, useEffect, useRef } from "react";
-import { useLoaderData, defer, Await, Link, useSearchParams } from "react-router-dom";
+import { useLoaderData, defer, Await, useSearchParams } from "react-router-dom";
 import { getProducts } from "../firebase";
-import { faCartShopping, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../Features/Cart/cartSlice";
-import Aos from "aos";
 import 'aos/dist/aos.css'
-import Banner from "../Components/Banner";
 import Skeleton from "../Components/Skeleton";
+import ProductCard from "../Components/ProductCard";
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -17,7 +16,6 @@ export const loader = async () => {
     if(!data.ok){
       console.log("error")
     }
-    console.log(data)
     //for a better UX defer the data so the data now becomes a promise
     //defer on accepts plain objects
     return defer({products: data });
@@ -25,15 +23,10 @@ export const loader = async () => {
 
 const Products = () => {
     const searchRef = useRef()
-    const dispatch = useDispatch()
     
     const loaderData = useLoaderData()
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type");
-
-    function handleCart(product){
-      dispatch(addToCart(product));
-    }
 
 
     useEffect(() => {
@@ -66,6 +59,7 @@ const Products = () => {
 
   return (
     <section className="min-h-screen w-full p-12 pt-24 lg:pl-[150px] lg:pr-[150px] flex flex-col items-center ">
+      <ToastContainer className="top-20 max-w-[274px] mx-auto" />
       <nav className="self-start mb-5 flex flex-col gap-3">
         <div className="relative w-[270px] group">
         <input 
@@ -80,7 +74,7 @@ const Products = () => {
         <label htmlFor="searchQuery">
           <FontAwesomeIcon 
           icon={faMagnifyingGlass}
-          className="absolute left-3 top-[50%] -translate-y-[50%] text-lg   text-gray-500"
+          className="absolute left-3 top-[50%] -translate-y-[50%] text-lg  text-gray-600"
           />
         </label>
         </div>
@@ -100,7 +94,7 @@ const Products = () => {
     <Suspense fallback={<div className="w-full h-[70vh] flex justify-center flex-wrap gap-12 ">
       {
         Array.from({length: 7}, (_, i) => i + 1).map(idx => (
-          <Skeleton className="w-[300px] md:w-[286px]" />
+          <Skeleton className="w-[300px] md:w-[286px]" key={idx} />
         ))
       }
     </div>}>
@@ -115,28 +109,7 @@ const Products = () => {
 
              {productsList.map(product => {
               return (
-                  <div 
-                  className="w-[300px] md:w-[286px] h-auto text-center" 
-                  key={product.id}
-                  data-aos='zoom-in'
-                  data-aos-easing='ease-in'
-                  data-aos-delay='50'
-                  >
-                    <Link 
-                    to={product.id}
-                    state={{
-                      search: `?${searchParams.toString()}`,
-                      type: typeFilter
-                    }}
-                    >
-                    <div className="w-full aspect-square">
-                    <img src={product.imgUrl} alt={product.name} className="w-full h-full object-fill mb-3" />
-                    <h2 className=" text-base font-['Roboto'] text-black">{product.name}</h2>
-                    <h4 className="font-medium">$<span className="text-lg font-semibold">{product.price}</span></h4>
-                    </div>
-                    </Link>
-                    <button className="mt-3 border-2 border-black p-3 py-2" onClick={() => handleCart(product)}>Add to Cart <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> </button>
-                  </div>
+                <ProductCard product={product} key={product.id} />
                )
             })}
           </div>
