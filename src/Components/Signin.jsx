@@ -34,12 +34,13 @@ const Signin = () => {
                     <label htmlFor="email" className='block mb-1 font-medium'>Email</label>
                     <input type="email" id='email' placeholder='Enter email address' className='border-2 w-full px-3 py-[6px] outline-none rounded-sm' ref={emailRef} required />
                 </div>
-                <div className='mb-3'>
+                <div className='mb-3 flex flex-col'>
                     <label htmlFor="password" className='block mb-1 font-medium'>Password</label>
                     <input type="password" id='password' placeholder='Enter password' className='border-2 w-full px-3 py-[6px] outline-none rounded-sm' ref={passwordRef} />
+                    <Link to='forgot-password' className="text-sm self-end text-red-500 hover:underline hover:underline-offset-2 cursor-pointer">Forgot password?</Link>
                 </div>
                 <button className='bg-black text-white self-center px-6 py-2 uppercase mb-2 font-["Roboto"]' type='submit'>Signin</button>
-                <p className='text-center' >Dont have an account? <Link to='../../login' replace className="hover:underline-offset-2 hover:underline">Signup</Link></p>
+                <p className='text-center' >Dont have an account? <Link to='../../login' replace className="hover:underline-offset-2 hover:underline hover:text-blue-400">Signup</Link></p>
             </form>
   )
 }

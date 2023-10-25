@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app"
-import {collection, doc, getDoc, getDocs, getFirestore} from "firebase/firestore/lite"
+import {collection, doc, getDoc, getDocs, getFirestore, onSnapshot} from "firebase/firestore"
 import {getAuth} from "firebase/auth"
 
 
@@ -21,16 +21,16 @@ const db= getFirestore(app)
 
 const productsCollection = collection(db, "products")
 
-export async function getProducts(){
+export const getProducts = async () => {
     const productsSnapshot = await getDocs(productsCollection);
     const productsArr = productsSnapshot.docs.map(doc => ({
         ...doc.data(),
         id: doc.id,
     }))
-    return productsArr
+    return productsArr;
 }
 
-export async function getProduct(id){
+export const getProduct = async (id) => {
   const docRef = doc(db, "products", id);
   const product = await getDoc(docRef)
   return {

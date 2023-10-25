@@ -26,8 +26,8 @@ const ProductDetailPage = () => {
             <div className="w-full sm:w-1/2 aspect-square p-8">
                 <img src={loaderData.imgUrl} alt={loaderData.name} className="w-full h-full object-fill" />
             </div>
-            <div className="w-full sm:w-1/2 h-auto p-8">
-                <h2 className="text-lg font-medium font-['Roboto'] mb-1">{loaderData.name}</h2>
+            <div className="w-full sm:w-1/2 h-auto p-8 pt-0 sm:pt-8">
+                <h2 className="text-xl font-medium font-['Roboto'] mb-1">{loaderData.name}</h2>
                 <p className=" text-base font-light mb-2 font-['Roboto']">{loaderData.description}</p>
                 <p className="mb-2">Gender: <span className="uppercase font-['Roboto']">{loaderData.gender}</span></p>
                 <p className="mb-12 font-semibold">$<span className="text-lg font-semibold">{loaderData.price}</span></p>

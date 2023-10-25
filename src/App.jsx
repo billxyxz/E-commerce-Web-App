@@ -18,6 +18,7 @@ import RequireAuth from './Pages/RequireAuth'
 import { useEffect } from 'react'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import PasswordReset from './Components/PasswordReset'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -73,6 +74,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             path='signin'
             element={<Signin />}
             />
+            <Route path='signin/forgot-password' element={<PasswordReset />} />
         </Route>
         <Route
         path='user'

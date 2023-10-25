@@ -99,7 +99,7 @@ const Cart = () => {
           {/* The table heading display for large screen sizes */}
           <table className="w-full">
           <thead>
-            <tr className=" font-normal">
+            <tr className="font-['Poppins'] font-semibold">
               <td className=" lg:pl-40">Description</td>
               <td className="pb-5">Quantity</td>
               <td className="pb-5 ">Remove Item</td>

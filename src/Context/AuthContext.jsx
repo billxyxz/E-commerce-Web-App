@@ -9,16 +9,14 @@ export const useAuthContext = () => {
   return useContext(AuthContext)
 }
 
-export function AuthProvider({children}){
+export function AuthProvider({ children }){
   const [currentUser, setCurrentUser] = useState(null)
 
   function signup(email, password){
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
-  function signin(email, password){
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+  const signin = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
   function logout(){
     return signOut(auth);
